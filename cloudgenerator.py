@@ -23,14 +23,17 @@ wc_trudeau = WordCloud(background_color = "white", mode = "RGBA", max_words = 10
 wc_sheer = WordCloud(background_color = "white", mode = "RGBA", max_words = 1000, mask = mask).generate(sheer_text)
 
 # Set up the subplots and display them
-fig, axes = plt.subplots(1, 2)
+fig, axes = plt.subplots(1, 3)
 
 axes[0].imshow(wc_trudeau.recolor(color_func=image_colors), interpolation="bilinear")
 axes[0].axis("off")
 axes[0].set_title("Election Speech: Trudeau")
 
-axes[1].imshow(wc_sheer.recolor(color_func=image_colors), interpolation="bilinear")
+axes[1].imshow(mask, interpolation = "bilinear")
 axes[1].axis("off")
-axes[1].set_title("Election Speech: Sheer")
+
+axes[2].imshow(wc_sheer.recolor(color_func=image_colors), interpolation="bilinear")
+axes[2].axis("off")
+axes[2].set_title("Election Speech: Sheer")
 
 plt.show()
